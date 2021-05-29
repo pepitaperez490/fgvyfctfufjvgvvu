@@ -26,10 +26,10 @@ function getRealIP()
                : 
                "unknown" );
  
-      // los proxys van añadiendo al final de esta cabecera
+      // los proxys van aÃ±adiendo al final de esta cabecera
       // las direcciones ip que van "ocultando". Para localizar la ip real
       // del usuario se comienza a mirar por el principio hasta encontrar 
-      // una dirección ip que no sea del rango privado. En caso de no 
+      // una direcciÃ³n ip que no sea del rango privado. En caso de no 
       // encontrarse ninguna se toma como valor el REMOTE_ADDR
  
       $entries = preg_split('/[, ]/', $_SERVER['HTTP_X_FORWARDED_FOR']);
@@ -76,21 +76,21 @@ function getRealIP()
 
 $ip= getRealIP();
 
-mysql_connect(«mongodb://user1:rFkN6CkWYMSrsVT2@cluster0-shard-00-00.rjz0x.mongodb.net:27017,cluster0-shard-00-01.rjz0x.mongodb.net:27017,cluster0-shard-00-02.rjz0x.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-wl9g17-shard-0&authSource=admin&retryWrites=true&w=majority»,»user1»,»rFkN6CkWYMSrsVT2»»);
+mysql_connect(Â«mongodb://user1:rFkN6CkWYMSrsVT2@cluster0-shard-00-00.rjz0x.mongodb.net:27017,cluster0-shard-00-01.rjz0x.mongodb.net:27017,cluster0-shard-00-02.rjz0x.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-wl9g17-shard-0&authSource=admin&retryWrites=true&w=majorityÂ»,Â»user1Â»,Â»rFkN6CkWYMSrsVT2Â»Â»);
 
-mysql_select_db(«ip»);
+mysql_select_db(Â«ipÂ»);
 
-if(isset($HTTP_COOKIE_VARS[«usNick»]) && isset($HTTP_COOKIE_VARS[«usPass»]) )
+if(isset($HTTP_COOKIE_VARS[Â«usNickÂ»]) && isset($HTTP_COOKIE_VARS[Â«usPassÂ»]) )
 {
-$result = mysql_query(«SELECT * FROM usuarios WHERE nick='».
-$HTTP_COOKIE_VARS[«usNick»].»‘ AND password='».$HTTP_COOKIE_VARS[«usPass»].»‘»);
+$result = mysql_query(Â«SELECT * FROM usuarios WHERE nick='Â».
+$HTTP_COOKIE_VARS[Â«usNickÂ»].Â»â€˜ AND password='Â».$HTTP_COOKIE_VARS[Â«usPassÂ»].Â»â€˜Â»);
 
 if($row = mysql_fetch_array($result))
 {
 
-$nickip = $row[«nick»];
+$nickip = $row[Â«nickÂ»];
 
-$sql = «UPDATE usuarios SET ip = ‘$ip’ WHERE nick=’$nickip'»;
+$sql = Â«UPDATE usuarios SET ip = â€˜$ipâ€™ WHERE nick=â€™$nickip'Â»;
 mysql_query($sql);
 }
 else
